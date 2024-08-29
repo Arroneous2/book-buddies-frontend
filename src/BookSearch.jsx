@@ -13,10 +13,8 @@ export function BookshelfIndex() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("hello", apiKey);
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=ever+the+hero&key=${apiKey}`).then((response) => {
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`).then((response) => {
       console.log("get Google Book");
-      console.log(response.data.items[0].volumeInfo.title);
       setBookSearchResults(response.data.items);
       console.log(bookSearchResults);
     });
