@@ -1,0 +1,37 @@
+import { useState } from "react";
+import axios from "axios";
+
+export function BookshelfIndex() {
+  const [query, setQuery] = useState("");
+  const [bookSearchResults, setBookSearchResults] = useState([]);
+
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.get("https://www.googleapis.com/books/v1/volumes?q=ever+the+hero&key=").then((response) => {
+      console.log("get Google Book");
+      console.log(response.data.items[0].volumeInfo.title);
+      setBookSearchResults(response.data.items);
+      console.log(bookSearchResults);
+    });
+    console.log("Search query:", query);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Search..." value={query} onChange={handleInputChange} />
+        <button type="submit">Search</button>
+      </form>
+      <h1>Book Search Results</h1>
+      {bookSearchResults.map((book) => (
+        <div key={book.id}>
+          <h2>Title:{book.volumeInfo.title}</h2>
+        </div>
+      ))}
+    </div>
+  );
+}
