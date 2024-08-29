@@ -5,13 +5,16 @@ export function BookshelfIndex() {
   const [query, setQuery] = useState("");
   const [bookSearchResults, setBookSearchResults] = useState([]);
 
+  const apiKey = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
+
   const handleInputChange = (event) => {
     setQuery(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.get("https://www.googleapis.com/books/v1/volumes?q=ever+the+hero&key=").then((response) => {
+    console.log("hello", apiKey);
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=ever+the+hero&key=${apiKey}`).then((response) => {
       console.log("get Google Book");
       console.log(response.data.items[0].volumeInfo.title);
       setBookSearchResults(response.data.items);
