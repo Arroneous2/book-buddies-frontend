@@ -31,6 +31,11 @@ export function BookshelfIndex() {
       {bookSearchResults.map((book) => (
         <div key={book.id}>
           <h2>Title:{book.volumeInfo.title}</h2>
+          <h3>Subtitle:{book.volumeInfo.subtitle}</h3>
+          <p>Author:{book.volumeInfo.authors}</p>
+          <p>Published Date:{book.volumeInfo.publishedDate}</p>
+          <p>Pages:{book.volumeInfo.pageCount}</p>
+          <img src={book.volumeInfo.imageLinks.thumbnail} alt="" />
         </div>
       ))}
     </div>
