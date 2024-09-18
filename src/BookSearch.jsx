@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
+import { BookSearchButton } from "./BookSearchButton";
 
-export function BookshelfIndex() {
+export function BookSearch() {
   const [query, setQuery] = useState("");
   const [bookSearchResults, setBookSearchResults] = useState([]);
 
@@ -11,7 +12,7 @@ export function BookshelfIndex() {
     setQuery(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmitSearch = (event) => {
     event.preventDefault();
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`).then((response) => {
       console.log("get Google Book");
@@ -23,7 +24,7 @@ export function BookshelfIndex() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmitSearch}>
         <input type="text" placeholder="Search..." value={query} onChange={handleInputChange} />
         <button type="submit">Search</button>
       </form>
@@ -36,6 +37,7 @@ export function BookshelfIndex() {
           <p>Published Date:{book.volumeInfo.publishedDate}</p>
           <p>Pages:{book.volumeInfo.pageCount}</p>
           <img src={book.volumeInfo.imageLinks.thumbnail} alt="" />
+          <BookSearchButton book={book} />
         </div>
       ))}
     </div>

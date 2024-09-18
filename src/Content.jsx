@@ -1,4 +1,4 @@
-import { BookshelfIndex } from "./BookSearch";
+import { BookSearch } from "./BookSearch";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 
@@ -7,7 +7,7 @@ export function Content() {
     <main>
       <Signup />
       <Login />
-      <BookshelfIndex />
+      <BookSearch />
     </main>
   );
 }
