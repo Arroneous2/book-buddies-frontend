@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { BookSearchButton } from "./BookSearchButton";
+import { AddBookButton } from "./AddBookButton";
 
 export function BookSearch() {
   const [query, setQuery] = useState("");
@@ -37,7 +37,7 @@ export function BookSearch() {
           <p>Published Date:{book.volumeInfo.publishedDate}</p>
           <p>Pages:{book.volumeInfo.pageCount}</p>
           <img src={book.volumeInfo.imageLinks.thumbnail} alt="" />
-          <BookSearchButton book={book} />
+          <AddBookButton book={book} />
         </div>
       ))}
     </div>
