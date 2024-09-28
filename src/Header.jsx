@@ -20,6 +20,9 @@ export function Header() {
           <li>
             <Link to="/users-index">Users Index</Link>
           </li>
+          <li>
+            <Link to="/bookshelf-index">Bookshelf Index</Link>
+          </li>
         </ul>
       </nav>
     </header>

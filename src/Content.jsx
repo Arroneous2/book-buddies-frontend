@@ -3,6 +3,7 @@ import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { UsersIndex } from "./UsersIndex";
 import { Routes, Route } from "react-router-dom";
+import { BookshelfIndex } from "./BookshelfIndex";
 
 export function Content() {
   return (
@@ -12,6 +13,7 @@ export function Content() {
         <Route path="/login" element={<Login />} />
         <Route path="/book-search" element={<BookSearch />} />
         <Route path="/users-index" element={<UsersIndex />} />
+        <Route path="bookshelf-index" element={<BookshelfIndex />} />
       </Routes>
     </main>
   );
