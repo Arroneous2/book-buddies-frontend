@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export function UsersIndex() {
   const jwt = localStorage.getItem("jwt");
+  const navigate = useNavigate();
 
   const [users, setUsers] = useState([]);
 
@@ -17,6 +19,12 @@ export function UsersIndex() {
       });
   };
 
+  const handleClick = (userId) => {
+    // Navigate to bookshelf and pass userId via state
+    console.log(userId);
+    navigate(`/bookshelf`, { state: { userId: userId } });
+  };
+
   useEffect(handleUsersIndex, []);
 
   return (
@@ -25,13 +33,13 @@ export function UsersIndex() {
       {users.map((user) => (
         <div
           key={user.id}
-          onClick={() => alert(`Clicked on ${user.first_name} ${user.last_name}`)}
+          onClick={() => handleClick(user.id)}
           role="button"
           tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
-              alert(`Clicked on ${user.first_name} ${user.last_name} via keyboard!`);
+              handleClick(user.id);
             }
           }}
         >

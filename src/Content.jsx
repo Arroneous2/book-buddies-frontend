@@ -4,6 +4,7 @@ import { Login } from "./Login";
 import { UsersIndex } from "./UsersIndex";
 import { Routes, Route } from "react-router-dom";
 import { BookshelfIndex } from "./BookshelfIndex";
+import { BookshelfByUserIndex } from "./BookshelfByUserIndex";
 
 export function Content() {
   return (
@@ -14,6 +15,7 @@ export function Content() {
         <Route path="/book-search" element={<BookSearch />} />
         <Route path="/users-index" element={<UsersIndex />} />
         <Route path="bookshelf-index" element={<BookshelfIndex />} />
+        <Route path="/bookshelf" element={<BookshelfByUserIndex />} /> {/* Bookshelf details */}
       </Routes>
     </main>
   );
